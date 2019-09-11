@@ -1,5 +1,5 @@
 
-
+import numpy as np
 class CostFunction(object):
     def __init__(self):
         pass
@@ -7,9 +7,11 @@ class CostFunction(object):
 
 class RMSE(CostFunction):
     @staticmethod
-    def calc(x):
-        pass
+    def calc(y, yPredict):
+        error = np.sum((y-yPredict)**2)
+        return error
+        
 
     @staticmethod
-    def derive(x):
-        pass
+    def derive(y, yPredict):
+        return 2*(y-yPredict)

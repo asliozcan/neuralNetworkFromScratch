@@ -22,6 +22,6 @@ if __name__ == "__main__":
 
     myNN.compile()
 
-    #myNN.fit(trainX, trainY, learningRate=0.001, numberOfEpoch=10)
+    myNN.fit(trainX, trainY, learningRate=0.001, numberOfEpoch=10)
     print myNN.predict( trainX )
     # 0.23 0.77

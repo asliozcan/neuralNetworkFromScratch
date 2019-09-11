@@ -20,6 +20,8 @@ class FeedForwardNN(object):
         self.layers = layers
         self.costFunction = costFunction
         self._weights = []
+        self.d_weights = []
+        self.layerCache=[]
 
 
     def compile(self):
@@ -45,7 +47,14 @@ class FeedForwardNN(object):
             learningRate {float} -- [description] (default: {0.001})
             numberOfEpoch {int} -- [description] (default: {10})
         """
-        pass
+        for i in range(0, numberOfEpoch):
+            yPredict = self._forward(trainX)
+            self._backprop(trainY, yPredict)
+            #self.show()
+            for j in range(0, len(self._weights)):
+                shift = self.d_weights[j] * learningRate
+                self._weights[j] = self._weights[j] + shift
+
 
     def predict(self, x):
         """[summary]
@@ -72,13 +81,33 @@ class FeedForwardNN(object):
         """
 
     def _forward(self, x):
-        print self.layers
+        self.layerCache=[]
         for i in range(0, len(self.layers)):
-            print i, x.shape
-            x = self.layers[i].activation.calc( np.dot( x , self._weights[i] ) ) 
+            raw_input("wait forw")
+            self.layerCache.append(x)
+            x = self.layers[i].activation.calc( np.dot( x , self._weights[i] ) )
         return x
 
-    def _backprop(self, y):
-        pass
+    def _backprop(self, y, yPredict):
+        parameter=(self.costFunction.derive(y, yPredict)*self.layers[len(self.layers)-1].activation.derive(yPredict))
+        print parameter, self.show()
+        # for i in range(len(self._weights)-1, 0, -1):
+        #     if i==len(self._weights)-1:
+        #         dweight = np.dot(self.layerCache[i-1].transpose(), parameter)
+        #         self.d_weights.append(dweight)
+        #     else:
+        #         parameter = np.dot(parameter, self._weights[i+1].transpose())*self.layers[i].activation.derive(self.layerCache)
+        #         dweight = np.dot(self.layerCache[i-1].transpose(), parameter)
+        #         self.d_weights.append(dweight)
+        #     self.d_weights.reverse()
+        #     print [x for x in self.d_weights]
+        #     return self.d_weights
 
 
+    def show(self):
+        print "##########"
+        print "W: ", [x.shape for x in self._weights]
+        print "derivatives: ", [x.shape for x in self.d_weights]
+        print "LC: ", [x.shape for x in self.layerCache]
+        print "L: ", [x.numberOfNeurons for x in self.layers]
+        print "##########"
