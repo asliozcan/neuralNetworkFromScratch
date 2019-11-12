@@ -51,10 +51,11 @@ class FeedForwardNN(object):
             yPredict = self._forward(trainX)
             self._backprop(trainY, yPredict)
             #self.show()
-            print len(self.d_weights)
+            #print len(self.d_weights)
             for j in range(0, len(self._weights)):
                 shift = self.d_weights[j] * learningRate
                 self._weights[j] = self._weights[j] + shift
+            print i, ". epoch is ended"
 
 
     def predict(self, x):
@@ -90,19 +91,20 @@ class FeedForwardNN(object):
         return x
 
     def _backprop(self, y, yPredict):
+        self.d_weights = []
         parameter=(self.costFunction.derive(y, yPredict)*self.layers[len(self.layers)-1].activation.derive(yPredict))
-        print parameter.shape
+        #print parameter.shape
         # print "parameters", parameter, self.show()
-        print "###############", len(self._weights), len(self.layerCache), "#########"
-        for i in range(len(self._weights), 0, -1):
-            if i==len(self._weights):
-                dweight = np.dot(self.layerCache[i-1].transpose(), parameter)
-                print "dweight", i, dweight, dweight.shape
+        #print "###############", len(self._weights), len(self.layerCache), "#########"
+        for k in range(len(self._weights), 0, -1):
+            if k==len(self._weights): 
+                dweight = np.dot(self.layerCache[k-1].transpose(), parameter)
+                #print "dweight", k, dweight, dweight.shape
                 self.d_weights.append(dweight)
             else:
-                parameter = np.dot(parameter, self._weights[i].transpose())*self.layers[i].activation.derive(self.layerCache[i])
-                dweight = np.dot(self.layerCache[i-1].transpose(), parameter)
-                print "dweight", i, dweight, dweight.shape
+                parameter = np.dot(parameter, self._weights[k].transpose())*self.layers[k].activation.derive(self.layerCache[k])
+                dweight = np.dot(self.layerCache[k-1].transpose(), parameter)
+                #print "dweight", k, dweight, dweight.shape
                 self.d_weights.append(dweight)
         self.d_weights.reverse()
         #print [x for x in self.d_weights]
