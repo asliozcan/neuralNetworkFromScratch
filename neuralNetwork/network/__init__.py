@@ -56,6 +56,10 @@ class FeedForwardNN(object):
                 shift = self.d_weights[j] * learningRate
                 self._weights[j] = self._weights[j] + shift
             print i, ". epoch is ended"
+            acc = trainY - yPredict
+            print "acc", acc
+            self.costFunction.calc(trainY, yPredict)
+        
 
 
     def predict(self, x):

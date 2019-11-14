@@ -9,6 +9,7 @@ class RMSE(CostFunction):
     @staticmethod
     def calc(y, yPredict):
         error = np.sum((y-yPredict)**2)
+        print "error", error
         return error
         
 
