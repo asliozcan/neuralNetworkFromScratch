@@ -10,6 +10,14 @@ from sklearn.preprocessing import Imputer
 from sklearn.preprocessing import OneHotEncoder
 
 
+
+
+"""
+test.py
+====================================
+The core module of my example project
+"""
+
 if __name__ == "__main__":
     
     # trainX = np.random.randn(1000, 13) # number of samples, number of features
