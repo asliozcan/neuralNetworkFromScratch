@@ -59,4 +59,4 @@ if __name__ == "__main__":
     myNN2.fit(trainX, trainY, learningRate=0.001, numberOfEpoch=10)
     # print myNN.predict( trainX )
     # 0.23 0.77
-    print myNN2.predict( trainX)
+    #print myNN2.predict( trainX)

@@ -9,13 +9,13 @@ class RMSE(CostFunction):
     @staticmethod
     def calc(y, yPredict):
         error = np.sum((y-yPredict)**2)
-        print "error", error.shape
+        #print "error", error.shape
         return error
         
 
     @staticmethod
     def derive(y, yPredict):
-        print "derivative", 2*(y-yPredict)
+        #print "derivative", 2*(y-yPredict)
         return 2*(y-yPredict)
 
 
@@ -32,4 +32,4 @@ SAMPLE_DATA_COST_Y_PREDICT = np.array([[0.93921682, 0.7959142 ],
        [0.37858954, 0.43062208]])
 
 result = RMSE.calc(SAMPLE_DATA_COST_Y, SAMPLE_DATA_COST_Y_PREDICT)
-print result
+#print result
