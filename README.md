@@ -30,16 +30,47 @@ pipenv install
 
 ## Running The Tests
 
-### Break down into end to end tests
-
-```
-```
 
 ### Coding style tests
 
 ```
 pylint  // linter
 ```
+### Documentation
+
+Install
+```
+pip install sphinx
+```
+
+For documentation please use following scripts
+```
+cd docs/
+sphinx-apidoc -o . ..
+make html
+firefox _build/html/index.html
+```
+### Test Codes
+
+Install
+```
+pip install -U pytest
+```
+
+For running your test codes use following scripts
+
+```
+pytest
+```
+Create your test
+```python
+def func(x):
+    return x + 1
+
+def test_answer():
+    assert func(3) == 5
+```
+
 
 # Built With
 
