@@ -43,10 +43,20 @@ if __name__ == "__main__":
         Layer(2, Sigmoid)
     ]
 
-    myNN = FeedForwardNN( 13, layers=layers, costFunction=RMSE)
+    layers2 = [
+        Layer(20, Sigmoid),
+        Layer(5, Sigmoid),
+        Layer(2, Sigmoid)
+    ]
 
-    myNN.compile()
+    # myNN = FeedForwardNN( 13, layers=layers, costFunction=RMSE)
+    myNN2 = FeedForwardNN (13, layers=layers2, costFunction=RMSE)
 
-    myNN.fit(trainX, trainY, learningRate=0.001, numberOfEpoch=10)
-    print myNN.predict( trainX )
+    # myNN.compile()
+    myNN2.compile()
+
+    # myNN.fit(trainX, trainY, learningRate=0.001, numberOfEpoch=10)
+    myNN2.fit(trainX, trainY, learningRate=0.001, numberOfEpoch=10)
+    # print myNN.predict( trainX )
     # 0.23 0.77
+    #print myNN2.predict( trainX)

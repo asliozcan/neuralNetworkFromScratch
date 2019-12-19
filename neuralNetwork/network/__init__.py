@@ -47,6 +47,7 @@ class FeedForwardNN(object):
         """
         for i in range(0, numberOfEpoch):
             yPredict = self._forward(trainX)
+            print "shapes", yPredict.shape, trainY.shape
             self._backprop(trainY, yPredict)
             #self.show()
             #print len(self.d_weights)
@@ -88,7 +89,7 @@ class FeedForwardNN(object):
         """
         self.layerCache=[]
         for i in range(0, len(self.layers)):
-            raw_input("wait forw")
+            #raw_input("wait forw")
             self.layerCache.append(x)
             x = self.layers[i].activation.calc( np.dot( x , self._weights[i] ) )
         return x
