@@ -4,3 +4,8 @@
 _build
 _static
 _templates/
+
+build
+dist/
+
+neuralNetwork_pkg_*

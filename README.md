@@ -70,7 +70,17 @@ def func(x):
 def test_answer():
     assert func(3) == 5
 ```
+### Deployment
 
+To build 
+```
+python setup.py build
+```
+
+To install the package
+```
+python setup.py install
+```
 
 # Built With
 
