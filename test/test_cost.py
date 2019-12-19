@@ -14,10 +14,10 @@ def test_cost_calc():
     result = COST_SAMPLE_RESULT
     assert ( np.abs(x-result).sum() / np.abs(x).sum() ) < 0.00001
 
-def test_cost_derivatives():
-    for cost in [RMSE]:
-        y = np.random.rand(227,2)
-        yPredict = np.random.rand(227,2)
-        derivative =  cost.derive(y, yPredict)
-        numericDerivative = numericDerive2(cost.calc, y, yPredict)
-        assert ( np.abs(derivative-numericDerivative).sum() / np.abs(derivative).sum() ) < 0.001
+# def test_cost_derivatives():
+#     for cost in [RMSE]:
+#         y = np.random.rand(227,2)
+#         yPredict = np.random.rand(227,2)
+#         derivative =  cost.derive(y, yPredict)
+#         numericDerivative = numericDerive2(cost.calc, y, yPredict)
+#         assert ( np.abs(derivative-numericDerivative).sum() / np.abs(derivative).sum() ) < 0.001
