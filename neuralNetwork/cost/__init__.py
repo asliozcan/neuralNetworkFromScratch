@@ -8,6 +8,11 @@ class CostFunction(object):
 class RMSE(CostFunction):
     @staticmethod
     def calc(y, yPredict):
+        """RMSE calculation
+        
+            :param y: type: -- Actual output layer values
+            :param yPredict: type: -- Predicted output layer values
+        """
         error = np.sum((y-yPredict)**2)
         #print "error", error.shape
         return error
@@ -15,7 +20,11 @@ class RMSE(CostFunction):
 
     @staticmethod
     def derive(y, yPredict):
-        #print "derivative", 2*(y-yPredict)
+        """Cost Function's derivative
+        
+            :param y: type -- Actual output layer values
+            :param yPredict: type -- Predicted output layer values
+        """
         return 2*(y-yPredict)
 
 

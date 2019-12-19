@@ -1,7 +1,6 @@
 *.pyc
 .vscode/
 
-
 _build
 _static
 _templates/

@@ -10,11 +10,11 @@ class FeedForwardNN(object):
     def __init__(self, inputSize, layers=[], costFunction=None):
         """Feed Forward Neural Network Object     
         
-        Arguments:
-            object {[type]} -- 
-            inputSize {int} -- 
-            layers {Layer[]} -- Array of layers which are included in neural network
-            costFunction {CostFunction} -- Cost function of neural network
+       
+            :param object: type: -- 
+            :param inputSize: int: -- Size of input layer
+            :param layers: :Layer[]: -- Array of layers which are included in neural network
+            :param costFunction: CostFunction: -- Cost function of neural network
         """
         self.inputSize = inputSize
         self.layers = layers
@@ -37,15 +37,13 @@ class FeedForwardNN(object):
         
 
     def fit(self, trainX, trainY, learningRate=0.001, numberOfEpoch=10):
-        """[summary]
+        """Fit the model and make prediction
         
-        Arguments:
-            trainX {[type]} -- [description]
-            trainY {[type]} -- [description]
+            :param trainX: type: -- Training feature set
+            :param trainY: type: -- Training target set
         
-        Keyword Arguments:
-            learningRate {float} -- [description] (default: {0.001})
-            numberOfEpoch {int} -- [description] (default: {10})
+            :param learningRate: float: -- The step size at each iteration while moving toward a minimum of a loss function (default: {0.001})
+            :param numberOfEpoch: int: -- Number of times all of the training vectors are used once to update weights  (default: {10})
         """
         for i in range(0, numberOfEpoch):
             yPredict = self._forward(trainX)
@@ -64,30 +62,31 @@ class FeedForwardNN(object):
 
 
     def predict(self, x):
-        """[summary]
+        """Predict an output layer values
         
-        Arguments:
-            input {[type]} -- [description]
+            :param x: type: -- Training feature set
         """
         r = self._forward(x)
         return r 
 
 
     def save(self, filename):
-        """[summary]
-        
-        Arguments:
-            filename {[type]} -- [description]
+        """Save the file
+
+            :param filename: str: -- filename
         """
     
     def laod(self, filename):
-        """[summary]
+        """Load the file
         
-        Arguments:
-            filename {[type]} -- [description]
+            :param filename: str: -- Filename
         """
 
     def _forward(self, x):
+        """Forward propagation for NN
+        
+            :param x: type: -- Training feature set
+        """
         self.layerCache=[]
         for i in range(0, len(self.layers)):
             #raw_input("wait forw")
@@ -96,6 +95,11 @@ class FeedForwardNN(object):
         return x
 
     def _backprop(self, y, yPredict):
+        """Back propagation for NN
+        
+            :param y: type: -- Actual output layer values
+            :param yPredict: type: -- Predicted output layer values
+        """
         self.d_weights = []
         parameter=(self.costFunction.derive(y, yPredict)*self.layers[len(self.layers)-1].activation.derive(yPredict))
         #print parameter.shape
@@ -117,6 +121,8 @@ class FeedForwardNN(object):
 
 
     def show(self):
+        """Show the NN objects attributes
+        """
         print "##########"
         print "W: ", [x.shape for x in self._weights]
         print "derivatives: ", [x.shape for x in self.d_weights]
