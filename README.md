@@ -20,7 +20,7 @@ pip install pipenv
 Clone repo
 
 ```
-git clone  git@git.basestech.com:asli.ozcan/neural-network-from-scratch.git
+git clone  https://github.com/asliozcan/neuralNetworkFromScratch.git
 ```
 
 Install dependencies
