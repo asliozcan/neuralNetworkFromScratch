@@ -7,7 +7,7 @@ setuptools.setup(
     name="neuralNetwork-pkg-asliozcan", # Replace with your own username
     version="0.0.1",
     author="Asli Ozcan",
-    author_email="ozcan.as97@gmail.com",
+    author_email="asliozcaan@gmail.com",
     description="Neural Network Package",
     long_description=long_description,
     long_description_content_type="text/markdown",
